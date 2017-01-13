@@ -122,7 +122,11 @@ abstract class Queue extends \yii\base\Component
     public function init()
     {
         parent::init();
-        $this->module = \Yii::$app->getModule($this->module);
+        if($this->module) {
+            $this->module = \Yii::$app->getModule($this->module);
+        } else {
+            $this->module = \Yii::$app;
+        }
     }
 
     /**
